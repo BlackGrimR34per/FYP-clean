@@ -9,14 +9,22 @@ from skimage.io import imread, imshow
 image = cv2.imread("./cropped images/IC_0.png", cv2.IMREAD_GRAYSCALE)
 
 # Define a structuring element for entropy filtering
-selem = disk(5)
+# selem = disk(5)
 
 # Apply entropy filtering
-entropy_image = entropy(image, selem)
-scaled_entropy = entropy_image / entropy_image.max()
+# entropy_image = entropy(image, selem)
+# scaled_entropy = entropy_image / entropy_image.max()
 
-mask = scaled_entropy > 0.3
-plt.figure(num=None, figsize=(8, 6), dpi=80)
-reverse_mask = 1 - mask
-new_image = image * reverse_mask
-cv2.imwrite("Entropy.png", new_image)
+def disk_iterations(image):
+    f_size = 20
+    radi = list(range(1,10))
+    fig, ax = plt.subplots(3,3,figsize=(15,15))
+    for n, ax in enumerate(ax.flatten()):
+        ax.set_title(f'Radius at {radi[n]}', fontsize = f_size)
+        ax.imshow(entropy(image, disk(radi[n])), cmap =
+                  'magma');
+        ax.set_axis_off()
+    fig.tight_layout()
+    plt.show()
+
+disk_iterations(image)
