@@ -45,7 +45,7 @@ for i, prediction in enumerate(predictions):
     cropped_image = image[y:y + height, x:x + width]
 
     # Create a file name for the cropped image
-    output_path = os.path.join(output_dir, f'{label}_{i}.png')
+    output_path = os.path.join(output_dir, image_path)
 
     # Save the cropped image
     cv2.imwrite(output_path, cropped_image)
