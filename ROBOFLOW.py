@@ -8,11 +8,13 @@ import os
 model = inference.get_model("inspection-y0kud/2")
 
 # Read the image using cv2
-image_path = "IC.png"
+# input_dir = "path_to_your_images_directory"
+image_path = "IC_2.png"
 image = cv2.imread(image_path)
 
 # Convert the image to RGB (cv2 loads images in BGR format)
 image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+image = cv2.convertScaleAbs(image_rgb, alpha=1.5, beta=0)
 
 # Perform inference
 result = model.infer(image=image_rgb)
