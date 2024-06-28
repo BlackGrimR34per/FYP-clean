@@ -1,6 +1,3 @@
-
-
-
 # image_path = "./cropped images/IC.png"
 # preprocessed_image = preprocess_image(image_path)
 # detection_data = extract_text(preprocessed_image)

@@ -126,7 +126,7 @@ ax.imshow(inpainted_image, cmap='gray')
 
 n_boxes = len(detection_data['text'])
 for i in range(n_boxes):
-    if int(detection_data['conf'][i]) >= 0:  # Consider all detected boxes for cropping
+    if int(detection_data['conf'][i]) > 0:  # Consider all detected boxes for cropping
         (x, y, w, h) = (
         detection_data['left'][i], detection_data['top'][i], detection_data['width'][i], detection_data['height'][i])
         conf = detection_data['conf'][i]
